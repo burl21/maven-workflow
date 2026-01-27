@@ -17,6 +17,7 @@ on:
       - main
 
 permissions:
+  contents: write
   security-events: write
 
 jobs:
