@@ -35,7 +35,7 @@ jobs:
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.JRELEASER_GITHUB_TOKEN }}
           message: Perform release ${{ github.event.inputs.version }}
 
       - name: Release to Maven Central
