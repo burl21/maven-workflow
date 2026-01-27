@@ -5,7 +5,7 @@
 
     <groupId>com.example</groupId>
     <artifactId>maven-workflow</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.1-SNAPSHOT</version>
     <name>maven-workflow</name>
     <description>Demo project for Spring Boot</description>
     <url/>
