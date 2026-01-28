@@ -7,7 +7,7 @@
     <version>0.0.2-SNAPSHOT</version>
     <name>maven-workflow</name>
     <description>Demo project for Spring Boot</description>
-    <url />
+    <url>https://github.com/burl21/maven-workflow</url>
 
     <licenses>
         <license>
