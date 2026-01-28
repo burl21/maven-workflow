@@ -36,6 +36,7 @@ public final class Simple {
    * @return {@code true} if the name starts with the prefix (case-insensitive), {@code false} otherwise
    */
   public boolean startsWith(String prefix) {
+
     return Strings.CI.startsWith(name, prefix);
   }
 
