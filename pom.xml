@@ -16,6 +16,15 @@
         </license>
     </licenses>
 
+    <developers>
+        <developer>
+            <name>burl21</name>
+            <email>burl21@bot.com</email>
+            <url>https://github.com/burl21</url>
+            <organizationUrl>https://github.com/burl21/maven-workflow</organizationUrl>
+        </developer>
+    </developers>
+
     <!--    <scm>-->
     <!--        <connection>scm:git:git@github.com:burl21/maven-workflow.git</connection>-->
     <!--        <developerConnection>scm:git:ssh://github.com:burl21/maven-workflow.git</developerConnection>-->
