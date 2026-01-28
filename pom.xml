@@ -114,10 +114,10 @@
                             <active>ALWAYS</active>
                             <armored>true</armored>
                         </signing>
-                        <release>
-                            <github>
-                                <enabled>true</enabled>
-                                <owner>burl21</owner>
+<!--                        <release>-->
+<!--                            <github>-->
+<!--                                <enabled>true</enabled>-->
+<!--                                <owner>burl21</owner>-->
 <!--                                <name>maven-workflow</name>-->
 
 <!--                                <tagName>v{{projectVersion}}</tagName>-->
@@ -125,8 +125,8 @@
 
 <!--                                <draft>false</draft>-->
 <!--                                <prerelease>false</prerelease>-->
-                            </github>
-                        </release>
+<!--                            </github>-->
+<!--                        </release>-->
                         <deploy>
                             <maven>
                                 <mavenCentral>
