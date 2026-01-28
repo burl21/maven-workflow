@@ -4,7 +4,7 @@
 
     <groupId>io.github.burl21</groupId>
     <artifactId>maven-workflow</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>maven-workflow</name>
     <description>Demo project for Spring Boot</description>
     <url>https://github.com/burl21/maven-workflow</url>
@@ -107,12 +107,26 @@
                 <groupId>org.jreleaser</groupId>
                 <artifactId>jreleaser-maven-plugin</artifactId>
                 <version>${jreleaser-maven-plugin.version}</version>
+                <inherited>false</inherited>
                 <configuration>
                     <jreleaser>
                         <signing>
                             <active>ALWAYS</active>
                             <armored>true</armored>
                         </signing>
+                        <release>
+                            <github>
+                                <active>ALWAYS</active>
+                                <owner>burl21</owner>
+                                <name>maven-workflow</name>
+
+                                <tagName>v{{projectVersion}}</tagName>
+                                <releaseName>v{{projectVersion}}</releaseName>
+
+                                <draft>false</draft>
+                                <prerelease>false</prerelease>
+                            </github>
+                        </release>
                         <deploy>
                             <maven>
                                 <mavenCentral>

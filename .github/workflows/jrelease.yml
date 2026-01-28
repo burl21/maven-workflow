@@ -48,12 +48,12 @@ jobs:
           JRELEASER_GITHUB_TOKEN: ${{ secrets.JRELEASER_GITHUB_TOKEN }}
           JRELEASER_MAVENCENTRAL_USERNAME: ${{ secrets.JRELEASER_MAVENCENTRAL_USERNAME }}
           JRELEASER_MAVENCENTRAL_TOKEN: ${{ secrets.JRELEASER_MAVENCENTRAL_TOKEN }}
-        run: ./mvnw --no-transfer-progress --batch-mode -Prelease deploy jreleaser:deploy
+        run: ./mvnw --no-transfer-progress --batch-mode -Prelease deploy jreleaser:full-release
 
-      - name: Run JReleaser
-        uses: jreleaser/release-action@v2
-        env:
-          JRELEASER_GITHUB_TOKEN: ${{ secrets.JRELEASER_GITHUB_TOKEN }}
+#      - name: Run JReleaser
+#        uses: jreleaser/release-action@v2
+#        env:
+#          JRELEASER_GITHUB_TOKEN: ${{ secrets.JRELEASER_GITHUB_TOKEN }}
 
       - name: JReleaser release output
         if: always()
