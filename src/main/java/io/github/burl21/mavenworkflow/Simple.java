@@ -38,4 +38,8 @@ public final class Simple {
   public boolean startsWith(String prefix) {
     return Strings.CI.startsWith(name, prefix);
   }
+
+  public boolean equalsNameIgnoreCase(String other) {
+    return Strings.CI.equals(name, other);
+  }
 }
