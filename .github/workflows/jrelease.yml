@@ -4,9 +4,11 @@ permissions:
   contents: write
 
 on:
-  push:
-    tags:
-      - v*.*.*
+  workflow_dispatch:
+#on:
+#  push:
+#    tags:
+#      - v*
 
 jobs:
   release:
@@ -26,8 +28,8 @@ jobs:
           distribution: 'liberica'
           cache: maven
 
-      - name: Write release version
-        run: VERSION=${GITHUB_REF_NAME#v}; echo "VERSION=$VERSION" >> $GITHUB_ENV
+#      - name: Write release version
+#        run: VERSION=${GITHUB_REF_NAME#v}; echo "VERSION=$VERSION" >> $GITHUB_ENV
 
 #      - name: Set release version
 #        run: ./mvnw --no-transfer-progress --batch-mode versions:set -DnewVersion=${VERSION}
