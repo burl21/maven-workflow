@@ -40,6 +40,6 @@ public final class Simple {
   }
 
   public boolean equalsNameIgnoreCase(String other) {
-    return Strings.CI.equals(name, other);
+    return Strings.CS.equals(name, other);
   }
 }
