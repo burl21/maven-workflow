@@ -29,10 +29,17 @@ jobs:
           cache: maven
 
       - name: Write release version
-        run: VERSION=${GITHUB_REF_NAME#v}; echo "VERSION=$VERSION" >> $GITHUB_ENV
+        run: | 
+              VERSION=${GITHUB_REF_NAME#v}
+              echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Set release version
         run: ./mvnw --no-transfer-progress --batch-mode versions:set -DnewVersion=${VERSION}
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Commit & Push changes
         uses: actions-js/push@master
@@ -40,29 +47,28 @@ jobs:
           github_token: ${{ secrets.JRELEASER_GITHUB_TOKEN }}
           message: Perform release ${{ github.event.inputs.version }}
 
-      - name: Release to Maven Central
-        env:
-          JRELEASER_GPG_PASSPHRASE: ${{ secrets.JRELEASER_GPG_PASSPHRASE }}
-          JRELEASER_GPG_SECRET_KEY: ${{ secrets.JRELEASER_GPG_SECRET_KEY }}
-          JRELEASER_GPG_PUBLIC_KEY: ${{ secrets.JRELEASER_GPG_PUBLIC_KEY }}
-          JRELEASER_GITHUB_TOKEN: ${{ secrets.JRELEASER_GITHUB_TOKEN }}
-          JRELEASER_MAVENCENTRAL_USERNAME: ${{ secrets.JRELEASER_MAVENCENTRAL_USERNAME }}
-          JRELEASER_MAVENCENTRAL_TOKEN: ${{ secrets.JRELEASER_MAVENCENTRAL_TOKEN }}
-        run: ./mvnw --no-transfer-progress --batch-mode -Prelease deploy jreleaser:full-release
+#      - name: Release to Maven Central
+#        env:
+#          JRELEASER_GPG_PASSPHRASE: ${{ secrets.JRELEASER_GPG_PASSPHRASE }}
+#          JRELEASER_GPG_SECRET_KEY: ${{ secrets.JRELEASER_GPG_SECRET_KEY }}
+#          JRELEASER_GPG_PUBLIC_KEY: ${{ secrets.JRELEASER_GPG_PUBLIC_KEY }}
+#          JRELEASER_GITHUB_TOKEN: ${{ secrets.JRELEASER_GITHUB_TOKEN }}
+#          JRELEASER_MAVENCENTRAL_USERNAME: ${{ secrets.JRELEASER_MAVENCENTRAL_USERNAME }}
+#          JRELEASER_MAVENCENTRAL_TOKEN: ${{ secrets.JRELEASER_MAVENCENTRAL_TOKEN }}
+##        run: ./mvnw --no-transfer-progress --batch-mode -Prelease deploy jreleaser:full-release
+#        run: ./mvnw --no-transfer-progress --batch-mode -Prelease deploy jreleaser:deploy
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ env.VERSION }}
+          generate_release_notes: true
 
 #      - name: Run JReleaser
 #        uses: jreleaser/release-action@v2
 #        env:
 #          JRELEASER_GITHUB_TOKEN: ${{ secrets.JRELEASER_GITHUB_TOKEN }}
-
-      - name: JReleaser release output
-        if: success()
-        uses: actions/upload-artifact@v6
-        with:
-          name: jreleaser-release
-          path: |
-            out/jreleaser/trace.log
-            out/jreleaser/output.properties
 
       - name: Set next version
         run: ./mvnw --no-transfer-progress --batch-mode build-helper:parse-version versions:set -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.nextIncrementalVersion}-SNAPSHOT versions:commit
