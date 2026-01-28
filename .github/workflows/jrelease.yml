@@ -56,7 +56,7 @@ jobs:
 #          JRELEASER_GITHUB_TOKEN: ${{ secrets.JRELEASER_GITHUB_TOKEN }}
 
       - name: JReleaser release output
-        if: always()
+        if: success()
         uses: actions/upload-artifact@v6
         with:
           name: jreleaser-release
