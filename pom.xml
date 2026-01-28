@@ -17,9 +17,16 @@
         </license>
     </licenses>
 
+    <!--    <scm>-->
+    <!--        <connection>scm:git:git@github.com:burl21/maven-workflow.git</connection>-->
+    <!--        <developerConnection>scm:git:ssh://github.com:burl21/maven-workflow.git</developerConnection>-->
+    <!--        <tag>HEAD</tag>-->
+    <!--        <url>https://github.com/burl21/maven-workflow</url>-->
+    <!--    </scm>-->
+
     <scm>
-        <connection>scm:git:git@github.com:burl21/maven-workflow.git</connection>
-        <developerConnection>scm:git:ssh://github.com:burl21/maven-workflow.git</developerConnection>
+        <connection>scm:git:https://github.com/burl21/maven-workflow.git</connection>
+        <developerConnection>scm:git:https://github.com/burl21/maven-workflow.git</developerConnection>
         <tag>HEAD</tag>
         <url>https://github.com/burl21/maven-workflow</url>
     </scm>
