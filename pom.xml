@@ -4,7 +4,7 @@
 
     <groupId>io.github.burl21</groupId>
     <artifactId>maven-workflow</artifactId>
-    <version>0.0.20</version>
+    <version>0.0.21-SNAPSHOT</version>
 
     <packaging>pom</packaging>
     <name>maven-workflow</name>
