@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html","k":"18"},{"p":"java.io.github.burl21.mavenworkflow.abc","l":"Simple"}];updateSearchResults();

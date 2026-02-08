@@ -1,0 +1,45 @@
+-J-Duser.language=
+-J-Duser.country=
+@options
+@packages
+--no-fonts
+--add-modules
+ALL-MODULE-PATH
+--module-path
+'/home/runner/.m2/repository/org/apache/commons/commons-text/1.15.0/commons-text-1.15.0.jar:/home/runner/.m2/repository/org/apache/commons/commons-lang3/3.20.0/commons-lang3-3.20.0.jar:/home/runner/work/maven-workflow/maven-workflow/cba/target/cba-0.0.18.jar'
+--patch-module
+io.github.burl21='/home/runner/work/maven-workflow/maven-workflow/cba/src/main/java:/home/runner/work/maven-workflow/maven-workflow/cba/target/generated-sources/annotations'
+-encoding
+'UTF-8'
+-protected
+--release
+17
+-author
+-bottom
+'Copyright &#169; 2026. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/home/runner/work/maven-workflow/maven-workflow/cba/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'CBA 0.0.18 API'
+-use
+-version
+-windowtitle
+'CBA 0.0.18 API'
+java.io.github.burl21.mavenworkflow.abc.cba
+/home/runner/work/maven-workflow/maven-workflow/cba/target/reports/apidocs/type-search-index.js = 1770593049827
+/home/runner/work/maven-workflow/maven-workflow/cba/target/reports/apidocs/help-doc.html = 1770593049844
+/home/runner/work/maven-workflow/maven-workflow/cba/target/reports/apidocs/allpackages-index.html = 1770593049825
+/home/runner/work/maven-workflow/maven-workflow/cba/target/reports/apidocs/index.html = 1770593049839
+/home/runner/work/maven-workflow/maven-workflow/cba/target/reports/apidocs/module-search-index.js = 1770593049826
+/home/runner/work/maven-workflow/maven-workflow/cba/target/reports/apidocs/package-search-index.js = 1770593049826
+/home/runner/work/maven-workflow/maven-workflow/cba/target/reports/apidocs/allclasses-index.html = 1770593049823
+/home/runner/work/maven-workflow/maven-workflow/cba/target/reports/apidocs/tag-search-index.js = 1770593049827
+/home/runner/work/maven-workflow/maven-workflow/cba/target/reports/apidocs/overview-tree.html = 1770593049812
+/home/runner/work/maven-workflow/maven-workflow/cba/target/reports/apidocs/element-list = 1770593049771
+/home/runner/work/maven-workflow/maven-workflow/cba/target/reports/apidocs/search.html = 1770593049838
+/home/runner/work/maven-workflow/maven-workflow/cba/target/reports/apidocs/index-all.html = 1770593049836
+/home/runner/work/maven-workflow/maven-workflow/cba/target/reports/apidocs/member-search-index.js = 1770593049827
