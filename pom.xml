@@ -4,7 +4,9 @@
 
     <groupId>io.github.burl21</groupId>
     <artifactId>maven-workflow</artifactId>
-    <version>0.0.7</version>
+    <version>0.0.86</version>
+
+    <packaging>pom</packaging>
     <name>maven-workflow</name>
     <description>Demo project for Spring Boot</description>
     <url>https://github.com/burl21/maven-workflow</url>
@@ -25,12 +27,10 @@
         </developer>
     </developers>
 
-    <!--    <scm>-->
-    <!--        <connection>scm:git:git@github.com:burl21/maven-workflow.git</connection>-->
-    <!--        <developerConnection>scm:git:ssh://github.com:burl21/maven-workflow.git</developerConnection>-->
-    <!--        <tag>HEAD</tag>-->
-    <!--        <url>https://github.com/burl21/maven-workflow</url>-->
-    <!--    </scm>-->
+    <modules>
+        <module>abc</module>
+        <module>cba</module>
+    </modules>
 
     <scm>
         <connection>scm:git:https://github.com/burl21/maven-workflow.git</connection>
@@ -66,14 +66,12 @@
             <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -86,7 +84,6 @@
                     <parameters>true</parameters>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -102,56 +99,53 @@
                     </archive>
                 </configuration>
             </plugin>
-
-            <plugin>
-                <groupId>org.jreleaser</groupId>
-                <artifactId>jreleaser-maven-plugin</artifactId>
-                <version>${jreleaser-maven-plugin.version}</version>
-                <inherited>false</inherited>
-                <configuration>
-                    <jreleaser>
-                        <signing>
-                            <active>ALWAYS</active>
-                            <armored>true</armored>
-                        </signing>
-<!--                        <release>-->
-<!--                            <github>-->
-<!--                                <enabled>true</enabled>-->
-<!--                                <owner>burl21</owner>-->
-<!--                                <name>maven-workflow</name>-->
-
-<!--                                <tagName>v{{projectVersion}}</tagName>-->
-<!--                                <releaseName>v{{projectVersion}}</releaseName>-->
-
-<!--                                <draft>false</draft>-->
-<!--                                <prerelease>false</prerelease>-->
-<!--                            </github>-->
-<!--                        </release>-->
-                        <deploy>
-                            <maven>
-                                <mavenCentral>
-                                    <sonatype>
-                                        <active>ALWAYS</active>
-                                        <url>https://central.sonatype.com/api/v1/publisher</url>
-                                        <stagingRepositories>target/staging-deploy</stagingRepositories>
-                                    </sonatype>
-                                </mavenCentral>
-                            </maven>
-                        </deploy>
-                    </jreleaser>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
     <profiles>
         <profile>
             <id>release</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
             <properties>
                 <altDeploymentRepository>local::file:./target/staging-deploy</altDeploymentRepository>
             </properties>
             <build>
                 <plugins>
+                    <plugin>
+                        <groupId>org.jreleaser</groupId>
+                        <artifactId>jreleaser-maven-plugin</artifactId>
+                        <version>${jreleaser-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>deploy</id>
+                                <phase>deploy</phase>
+                                <goals>
+                                    <goal>deploy</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <jreleaser>
+                                <signing>
+                                    <active>ALWAYS</active>
+                                    <armored>true</armored>
+                                </signing>
+                                <deploy>
+                                    <maven>
+                                        <mavenCentral>
+                                            <sonatype>
+                                                <active>ALWAYS</active>
+                                                <url>https://central.sonatype.com/api/v1/publisher</url>
+                                                <stagingRepositories>target/staging-deploy</stagingRepositories>
+                                            </sonatype>
+                                        </mavenCentral>
+                                    </maven>
+                                </deploy>
+                            </jreleaser>
+                        </configuration>
+                    </plugin>
                     <plugin>
                         <artifactId>maven-source-plugin</artifactId>
                         <version>${maven-source-plugin.version}</version>

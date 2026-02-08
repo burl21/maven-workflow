@@ -1,4 +1,4 @@
-package io.github.burl21.mavenworkflow;
+package java.io.github.burl21.mavenworkflow.abc;
 
 import org.apache.commons.lang3.Strings;
 
