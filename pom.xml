@@ -4,7 +4,7 @@
 
     <groupId>io.github.burl21</groupId>
     <artifactId>maven-workflow</artifactId>
-    <version>0.0.10</version>
+    <version>0.0.18</version>
 
     <packaging>pom</packaging>
     <name>maven-workflow</name>
@@ -109,7 +109,9 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <altDeploymentRepository>local::file:./target/staging-deploy</altDeploymentRepository>
+                <altDeploymentRepository>
+                    local::file:./target/staging-deploy
+                </altDeploymentRepository>
             </properties>
             <build>
                 <plugins>
@@ -117,15 +119,7 @@
                         <groupId>org.jreleaser</groupId>
                         <artifactId>jreleaser-maven-plugin</artifactId>
                         <version>${jreleaser-maven-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <id>deploy</id>
-                                <phase>deploy</phase>
-                                <goals>
-                                    <goal>deploy</goal>
-                                </goals>
-                            </execution>
-                        </executions>
+                        <inherited>false</inherited>
                         <configuration>
                             <jreleaser>
                                 <signing>
